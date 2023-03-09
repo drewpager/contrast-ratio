@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Contrast Ratio: Easily calculate color contrast ratios. Passing WCAG was
+      never this easy!
+    </title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/png" href="about:blank" />
+  </head>
+  <div class="heading">
+    <h1>Contrast Ratio</h1>
+  </div>
+  <!-- <h1><a href="#"><div><span>Contrast</span></div> <div><strong>ratio</strong></div></a></h1> -->
+  <body>
+    <label class="background">
+      <span>Background:</span>
+      <div class="input-wrapper">
+        <input id="background" class="text-input" value="white" autofocus />
+        <input
+          id="backgroundColorPicker"
+          class="color-picker"
+          type="color"
+          tabindex="-1"
+        />
+      </div>
+      <output
+        for="background foreground"
+        class="rl"
+        aria-live="polite"
+        aria-label="Relative Luminance"
+      ></output>
+    </label>
+
+    <label class="foreground">
+      <span>Text color:</span>
+      <div class="input-wrapper">
+        <input id="foreground" class="text-input" value="hsla(200,0%,0%,.7)" />
+        <input
+          id="foregroundColorPicker"
+          class="color-picker"
+          type="color"
+          tabindex="-1"
+        />
+      </div>
+      <output
+        for="background foreground"
+        class="rl"
+        aria-live="polite"
+        aria-label="Relative Luminance"
+      ></output>
+    </label>
+
+    <output
+      for="background foreground"
+      class="contrast"
+      tabindex="0"
+      aria-live="polite"
+    >
+      <strong>?</strong>
+      <span class="error"></span>
+    </output>
+
+    <section id="results">
+      <output
+        for="background foreground"
+        id="preciseContrast"
+        aria-label="Precise contrast"
+      ></output>
+      <output for="background foreground" id="wcag"></output>
+    </section>
+
+    <section class="color-display" id="foregroundDisplay">
+      <button id="swap">⇋ Swap colors</button>
+    </section>
+
+    <section class="color-display" id="backgroundDisplay">
+      <h1>How to use</h1>
+      <p>
+        As you type, the contrast ratio indicated will update. Hover over the
+        circle to get more detailed information. When semi-transparent colors
+        are involved as backgrounds, the contrast ratio will have an error
+        margin, to account for the different colors they may be over.
+      </p>
+      <p style="font-family: 'GT America Regular' serif">
+        This sample text attempts to visually demonstrate how readable this
+        color combination is, for normal,
+        <span style="font-style: italic">italic</span>,
+        <span style="font-weight: bold">bold</span>, or
+        <span style="font-style: italic; font-weight: bold">bold italic</span>
+        text of various sizes and font styles.
+      </p>
+      <p>
+        It's critical for content readability and web performance that your
+        website's ratio be in the green zone.
+      </p>
+      <p style="font-size: 11pt">
+        <strong>Hint:</strong> Press the up and down keyboard arrows while over
+        a number inside a functional color notation. Watch it
+        increment/decrement. Try with the Shift or Alt key too!
+      </p>
+      <p>
+        <a
+          href="https://www.w3.org/TR/WCAG/#contrast-minimum"
+          rel="noopener"
+          target="_blank"
+          >WCAG 2.1 on contrast ratio</a
+        >
+      </p>
+      <footer></footer>
+    </section>
+
+    <script
+      src="https://leaverou.github.io/incrementable/incrementable.js"
+      id="incrementable"
+      async
+    ></script>
+    <script src="color.js"></script>
+    <script src="contrast-ratio.js"></script>
+  </body>
+</html>
